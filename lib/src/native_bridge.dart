@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 
 import 'interfaces/i_native_bridge.dart';
 
+const String _libName = 'color_extractor';
+
 /// A class to bridge Dart and native code for extracting dominant colors from images.
 ///
 /// This class is responsible for initializing the native function, handling FFI calls,
@@ -34,15 +36,18 @@ class NativeBridge extends INativeBridge with AppLogger {
   ///
   /// This method loads the shared library for Android (`libcolor_extractor.so`) and
   /// uses the `DynamicLibrary.process()` method for iOS.
-  ///
+
   /// Throws [UnsupportedError] if the platform is not Android or iOS.
   static Future<ExtractDominantColors> _defaultLoadFunction() async {
     late DynamicLibrary nativeLib;
 
-    if (Platform.isAndroid) {
-      nativeLib = DynamicLibrary.open('libcolor_extractor.so');
-    } else if (Platform.isIOS) {
-      nativeLib = DynamicLibrary.process();
+    if (Platform.isAndroid || Platform.isLinux) {
+      nativeLib = DynamicLibrary.open('lib$_libName.so');
+    } else if (Platform.isIOS || Platform.isMacOS) {
+      nativeLib = DynamicLibrary.open('$_libName.framework/$_libName');
+      if (Platform.isWindows) {
+        nativeLib = DynamicLibrary.open('$_libName.dll');
+      }
     } else {
       throw UnsupportedError('Unsupported platform');
     }
