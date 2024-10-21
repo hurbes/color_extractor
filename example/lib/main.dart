@@ -11,7 +11,7 @@ Future<List<Color>> getColors() async {
   final assetImage = await AssetImageAdapter.load('assets/image.png');
   final extractedColors = await ColorExtractor.instance.getDominantColors(
     image: assetImage,
-    numColors: 3,
+    numColors: 12,
   );
 
   return extractedColors;
@@ -35,37 +35,47 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Native Packages'),
+          title: const Text('Color Extractor'),
         ),
-        body: FutureBuilder<List<Color>>(
-          future: getColors(),
-          builder: (
-            BuildContext context,
-            AsyncSnapshot<List<Color>> value,
-          ) {
-            final connectionState = value.connectionState;
-            final colorList = value.data ?? [];
+        body: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(child: Image.asset('assets/image.png')),
+            SliverPadding(
+              padding: const EdgeInsets.only(top: 20),
+              sliver: SliverFillRemaining(
+                child: FutureBuilder<List<Color>>(
+                  future: getColors(),
+                  builder: (
+                    BuildContext context,
+                    AsyncSnapshot<List<Color>> value,
+                  ) {
+                    final connectionState = value.connectionState;
+                    final colorList = value.data ?? [];
 
-            if (connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            }
+                    if (connectionState == ConnectionState.waiting) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
 
-            if (colorList.isEmpty) {
-              return const Center(child: Text('No Color Data'));
-            }
+                    if (colorList.isEmpty) {
+                      return const Center(child: Text('No Color Data'));
+                    }
 
-            return ListView.builder(
-              itemCount: colorList.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  height: 60,
-                  width: double.infinity,
-                  margin: const EdgeInsets.all(10),
-                  color: colorList[index],
-                );
-              },
-            );
-          },
+                    return ListView.builder(
+                      itemCount: colorList.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          height: 60,
+                          width: double.infinity,
+                          margin: const EdgeInsets.all(10),
+                          color: colorList[index],
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
