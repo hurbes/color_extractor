@@ -1,5 +1,8 @@
 ## Changelog
 
+[0.0.3] - Hotfix #1
+- Fixed `DynamicLibrary` path based on platforms
+
 [0.0.2] - Initial Release 🎉
 - Add tests
 - Updated Dependencies 
