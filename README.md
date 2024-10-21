@@ -14,7 +14,7 @@ Hey there, color enthusiasts! 👋 Welcome to the Camy Color Extractor project. 
 ## 🖼️ Screenshots
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hurbes/color_extractor/main/screenshots/ss_0.PNG" alt="Color Extractor Screenshot" width="200"/>
+  <img src="https://raw.githubusercontent.com/hurbes/color_extractor/main/screenshots/ss_0.png" alt="Color Extractor Screenshot" width="200"/>
 </p>
 
 ## 🛠️ Installation
