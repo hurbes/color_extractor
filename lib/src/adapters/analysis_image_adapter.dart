@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:camerawesome/camerawesome_plugin.dart';
-import '../interfaces/image_source.dart';
+import 'package:color_extractor/color_extractor.dart';
 
 class AnalysisImageAdapter implements ImageSource {
   final AnalysisImage _analysisImage;
