@@ -34,9 +34,6 @@ class NativeBridge extends INativeBridge with AppLogger {
 
   /// Default method for loading the native function from the native library based on the platform.
   ///
-  /// This method loads the shared library for Android (`libcolor_extractor.so`) and
-  /// uses the `DynamicLibrary.process()` method for iOS.
-
   /// Throws [UnsupportedError] if the platform is not Android or iOS.
   static Future<ExtractDominantColors> _defaultLoadFunction() async {
     late DynamicLibrary nativeLib;

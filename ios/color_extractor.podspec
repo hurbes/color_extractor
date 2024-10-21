@@ -5,7 +5,7 @@
 Pod::Spec.new do |s|
   s.name             = 'color_extractor'
   s.version          = '0.0.1'
-  s.summary          = 'A Flutter package for extracting dominant colors from images using c with ffi for performance optimisation and multiple image formats support.'
+  s.summary          = 'A Flutter package for extracting dominant colors from images using c with ffi.'
   s.description      = <<-DESC
 A new Flutter FFI plugin project.
                        DESC
@@ -22,8 +22,6 @@ A new Flutter FFI plugin project.
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
   s.platform = :ios, '12.0'
-  s.source_files = 'ffi/**/*.c'
-  s.public_header_files = 'ffi/**/*.h'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
