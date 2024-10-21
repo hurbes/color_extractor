@@ -1,0 +1,24 @@
+{
+  "files.associations": {
+    "*c": "c",
+    "*.jsx": "javascriptreact",
+    "*.tsx": "typescriptreact",
+    "*.ts": "typescript",
+    "*.css": "css",
+    "cstdint": "cpp",
+    "cstring": "cpp",
+    "color_extractor.cpp": "c",
+    "string": "cpp",
+    "string_view": "cpp",
+    "unordered_map": "cpp",
+    "color_extractor.h": "c",
+    "__bit_reference": "cpp",
+    "__hash_table": "cpp",
+    "__split_buffer": "cpp",
+    "array": "cpp",
+    "deque": "cpp",
+    "initializer_list": "cpp",
+    "ios": "cpp",
+    "vector": "cpp"
+  }
+}

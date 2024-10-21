@@ -1,10 +1,20 @@
+import 'package:color_extractor/color_extractor.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:color_extractor/color_extractor.dart' as color_extractor;
-
-void main() {
+Future<void> main() async {
+  await ColorExtractor.initialize(enableDebugLogs: true);
   runApp(const MyApp());
+}
+
+Future<List<Color>> getColors() async {
+  final assetImage = await AssetImageAdapter.load('assets/image.png');
+  final extractedColors = await ColorExtractor.instance.getDominantColors(
+    image: assetImage,
+    numColors: 3,
+  );
+
+  return extractedColors;
 }
 
 class MyApp extends StatefulWidget {
@@ -15,58 +25,47 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late int sumResult;
-  late Future<int> sumAsyncResult;
-
   @override
   void initState() {
     super.initState();
-    sumResult = color_extractor.sum(1, 2);
-    sumAsyncResult = color_extractor.sumAsync(3, 4);
   }
 
   @override
   Widget build(BuildContext context) {
-    const textStyle = TextStyle(fontSize: 25);
-    const spacerSmall = SizedBox(height: 10);
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Native Packages'),
         ),
-        body: SingleChildScrollView(
-          child: Container(
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              children: [
-                const Text(
-                  'This calls a native function through FFI that is shipped as source in the package. '
-                  'The native code is built as part of the Flutter Runner build.',
-                  style: textStyle,
-                  textAlign: TextAlign.center,
-                ),
-                spacerSmall,
-                Text(
-                  'sum(1, 2) = $sumResult',
-                  style: textStyle,
-                  textAlign: TextAlign.center,
-                ),
-                spacerSmall,
-                FutureBuilder<int>(
-                  future: sumAsyncResult,
-                  builder: (BuildContext context, AsyncSnapshot<int> value) {
-                    final displayValue =
-                        (value.hasData) ? value.data : 'loading';
-                    return Text(
-                      'await sumAsync(3, 4) = $displayValue',
-                      style: textStyle,
-                      textAlign: TextAlign.center,
-                    );
-                  },
-                ),
-              ],
-            ),
-          ),
+        body: FutureBuilder<List<Color>>(
+          future: getColors(),
+          builder: (
+            BuildContext context,
+            AsyncSnapshot<List<Color>> value,
+          ) {
+            final connectionState = value.connectionState;
+            final colorList = value.data ?? [];
+
+            if (connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
+
+            if (colorList.isEmpty) {
+              return const Center(child: Text('No Color Data'));
+            }
+
+            return ListView.builder(
+              itemCount: colorList.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  height: 60,
+                  width: double.infinity,
+                  margin: const EdgeInsets.all(10),
+                  color: colorList[index],
+                );
+              },
+            );
+          },
         ),
       ),
     );

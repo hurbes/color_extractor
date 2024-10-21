@@ -1,0 +1,42 @@
+PODS:
+  - camerawesome (0.0.1):
+    - Flutter
+    - JPSVolumeButtonHandler
+  - color_extractor (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+  - JPSVolumeButtonHandler (1.0.5)
+  - path_provider_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+
+DEPENDENCIES:
+  - camerawesome (from `.symlinks/plugins/camerawesome/ios`)
+  - color_extractor (from `.symlinks/plugins/color_extractor/ios`)
+  - Flutter (from `Flutter`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
+
+SPEC REPOS:
+  trunk:
+    - JPSVolumeButtonHandler
+
+EXTERNAL SOURCES:
+  camerawesome:
+    :path: ".symlinks/plugins/camerawesome/ios"
+  color_extractor:
+    :path: ".symlinks/plugins/color_extractor/ios"
+  Flutter:
+    :path: Flutter
+  path_provider_foundation:
+    :path: ".symlinks/plugins/path_provider_foundation/darwin"
+
+SPEC CHECKSUMS:
+  camerawesome: 1e06540f60158809bc70f398ed1ac2cf93fe4188
+  color_extractor: b3b3c733d47e5720062bdfebb01a1bf1f3bc93d1
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  JPSVolumeButtonHandler: 53110330c9168ed325def93eabff39f0fe3e8082
+  path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
+
+PODFILE CHECKSUM: 7be2f5f74864d463a8ad433546ed1de7e0f29aef
+
+COCOAPODS: 1.15.2
