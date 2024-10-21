@@ -2,6 +2,7 @@
 
 [0.0.3] - Hotfix #1
 - Fixed `DynamicLibrary` path based on platforms
+- Fixed `podspec`source_file path
 
 [0.0.2] - Initial Release 🎉
 - Add tests
