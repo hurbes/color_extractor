@@ -5,13 +5,13 @@
 Pod::Spec.new do |s|
   s.name             = 'color_extractor'
   s.version          = '0.0.1'
-  s.summary          = 'A new Flutter FFI plugin project.'
+  s.summary          = 'A Flutter package for extracting dominant colors from images using c with ffi for performance optimisation and multiple image formats support.'
   s.description      = <<-DESC
 A new Flutter FFI plugin project.
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'http://banerjeearnab.com'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'Personal' => 'me@banerjeearnab.com' }
 
   # This will ensure the source files in Classes/ are included in the native
   # builds of apps using this FFI plugin. Podspec does not support relative

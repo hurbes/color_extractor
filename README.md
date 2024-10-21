@@ -1,4 +1,4 @@
-# 🎨 Camy Color Extractor 🖼️
+# 🎨 Color Extractor 🖼️
 
 Hey there, color enthusiasts! 👋 Welcome to the Camy Color Extractor project. This nifty little package helps you extract dominant colors from images in your Flutter apps. Whether you're building a cool photo app or just want to add some color magic to your UI, we've got you covered! 🌈
 
@@ -10,13 +10,20 @@ Hey there, color enthusiasts! 👋 Welcome to the Camy Color Extractor project. 
 - Easy-to-use Dart API
 - Isolate support for background processing
 
+
+## 🖼️ Screenshots
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/hurbes/color_extractor/main/screenshots/ss_0.PNG" alt="Color Extractor Screenshot" width="200"/>
+</p>
+
 ## 🛠️ Installation
 
 Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  camy_color_extractor: ^1.0.0
+  color_extractor: ^0.0.1
 ```
 
 Then run:
@@ -30,7 +37,7 @@ flutter pub get
 First, initialize the ColorExtractor:
 
 ```dart
-import 'package:camy_color_extractor/camy_color_extractor.dart';
+import 'package:color_extractor/color_extractor.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,7 +53,7 @@ Now you're ready to extract some colors! 🎉
 Here's a quick example of how to extract dominant colors from an image:
 
 ```dart
-import 'package:camy_color_extractor/camy_color_extractor.dart';
+import 'package:color_extractor/color_extractor.dart';
 
 // Load an image (you can use AssetImage, NetworkImage, or MemoryImage)
 final imageSource = await AssetImageAdapter.load('assets/my_cool_image.jpg');
@@ -68,7 +75,7 @@ colors.forEach((color) {
 The Camy Color Extractor uses a clever combination of Dart and native code to efficiently extract dominant colors:
 
 1. Images are loaded and converted to a common format (RGB)
-2. The heavy lifting of color extraction is done in native code (C++ for Android, Objective-C for iOS)
+2. The heavy lifting of color extraction is done in native code (C with FFI)
 3. Processing is done in an isolate to keep your UI buttery smooth 🧈
 4. Results are returned as a list of Flutter `Color` objects
 
