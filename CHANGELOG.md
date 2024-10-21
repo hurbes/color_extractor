@@ -1,5 +1,9 @@
 ## Changelog
 
+[0.0.2] - Initial Release 🎉
+- Add tests
+- Updated Dependencies 
+ 
 [0.0.1] - Initial Release 🎉
 Added 🚀
 - Introduced the dominant color extraction functionality using k-means clustering.

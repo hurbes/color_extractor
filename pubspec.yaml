@@ -1,6 +1,6 @@
 name: color_extractor
 description: "A Flutter package for extracting dominant colors from images using c with ffi for performance optimisation and multiple image formats support."
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/hurbes/color_extractor
 
 environment:
@@ -20,6 +20,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  test: 
+  mockito: ^5.0.0
+  build_runner: ^2.0.0
   flutter_lints: ^4.0.0
 
 flutter:
